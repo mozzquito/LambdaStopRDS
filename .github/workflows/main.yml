@@ -20,3 +20,8 @@ jobs:
           cp ./lambda_function.py  ./deployment_zip
           cd deployment_zip 
           zip -r lambda_zip.zip *
+
+      - name: lambda_code_update
+        run: |
+          aws lambda update-function-code --function-name lambda_deployment_via_gitaction --zip-file fileb://./deployment_zip/lambda_zip.zip
+
